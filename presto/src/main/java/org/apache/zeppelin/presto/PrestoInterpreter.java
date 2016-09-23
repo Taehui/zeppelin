@@ -42,7 +42,7 @@ import java.util.Properties;
  *  SELECT column1, count(*) cnt
  *  FROM [schema].[database].[table]
  *  GROUP BY column1
- *  ORDER BY 2 cnt DESC
+ *  ORDER BY 3 cnt DESC
  *  LIMIT 10
  * }
  * </p>
