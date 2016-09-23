@@ -20,13 +20,41 @@ package org.apache.zeppelin.presto;
 import org.apache.zeppelin.interpreter.Interpreter;
 import org.apache.zeppelin.interpreter.InterpreterContext;
 import org.apache.zeppelin.interpreter.InterpreterResult;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Properties;
 
 /**
- * Presto interpreter for Zeppelin.
+ * Presto tnterpreter for Zeppelin.
+ *
+ * <ul>
+ *   <li>{@code presto.url} - Presto Server URL</li>
+ *   <li>{@code presto.catalog} - Presto Catalog</li>
+ *   <li>{@code presto.schema} - Presto Schema</li>
+ *   <li>{@code presto.rows.max} - Max Result Raw Size</li>
+ * </ul>
+ *
+ * <p>
+ * How to use: <br/>
+ * {@code %presto<br/>
+ * {@code
+ *  SELECT column1, count(*) cnt
+ *  FROM [schema].[database].[table]
+ *  GROUP BY column1
+ *  ORDER BY 2 cnt DESC
+ *  LIMIT 10
+ * }
+ * </p>
  */
 public class PrestoInterpreter extends Interpreter {
+
+  Logger logger = LoggerFactory.getLogger(PrestoInterpreter.class);
+
+  static final String PRESTOSERVER_URL = "presto.url";
+  static final String PRESTOSERVER_CATALOG = "presto.catalog";
+  static final String PRESTOSERVER_SCHEMA = "presto.schema";
+  static final String PRESTO_MAX_ROW = "presto.rows.max";
 
   public PrestoInterpreter(Properties property) {
     super(property);
