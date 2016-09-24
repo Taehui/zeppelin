@@ -26,35 +26,29 @@ import org.slf4j.LoggerFactory;
 import java.util.Properties;
 
 /**
- * Presto tnterpreter for Zeppelin.
+ * Presto interpreter for Zeppelin.
  *
  * <ul>
- *   <li>{@code presto.url} - Presto Server URL</li>
- *   <li>{@code presto.catalog} - Presto Catalog</li>
- *   <li>{@code presto.schema} - Presto Schema</li>
- *   <li>{@code presto.rows.max} - Max Result Raw Size</li>
+ *   <li>{@code zeppelin.presto.project_id} - ?? </li>
+ *   <li>{@code zeppelin.presto.wait_time} - ?? </li>
+ *   <li>{@code zeppelin.presto.max_no_of_rows} - ?? </li>
  * </ul>
  *
  * <p>
  * How to use: <br/>
  * {@code %presto<br/>
  * {@code
- *  SELECT column1, count(*) cnt
- *  FROM [schema].[database].[table]
- *  GROUP BY column1
- *  ORDER BY 3 cnt DESC
- *  LIMIT 10
+ *   SELECT column1, count(*) cnt
+ *   FROM [schema].[database].[table]
+ *   GROUP BY column1
+ *   ORDER BY 3 cnt desc
+ *   LIMIT 10
  * }
  * </p>
  */
 public class PrestoInterpreter extends Interpreter {
 
   Logger logger = LoggerFactory.getLogger(PrestoInterpreter.class);
-
-  static final String PRESTOSERVER_URL = "presto.url";
-  static final String PRESTOSERVER_CATALOG = "presto.catalog";
-  static final String PRESTOSERVER_SCHEMA = "presto.schema";
-  static final String PRESTO_MAX_ROW = "presto.rows.max";
 
   public PrestoInterpreter(Properties property) {
     super(property);
@@ -89,4 +83,5 @@ public class PrestoInterpreter extends Interpreter {
   public int getProgress(InterpreterContext context) {
     return 0;
   }
+
 }
